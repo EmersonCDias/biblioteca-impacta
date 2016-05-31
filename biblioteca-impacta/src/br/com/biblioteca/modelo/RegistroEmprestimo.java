@@ -11,9 +11,10 @@ public class RegistroEmprestimo {
 	
 	private String nome;
 	private String ra;
-	private String idLivro;
+	private Long idLivro;
 	private String dataRetirada;
 	private String dataEntrega;
+	
 	public long getId() {
 		return id;
 	}
@@ -32,11 +33,11 @@ public class RegistroEmprestimo {
 	public void setRa(String ra) {
 		this.ra = ra;
 	}
-	public String getIdLivro() {
+	public Long getIdLivro() {
 		return idLivro;
 	}
-	public void setIdLivro(String idLivro) {
-		this.idLivro = idLivro;
+	public void setIdLivro(long l) {
+		this.idLivro = l;
 	}
 	public String getDataRetirada() {
 		return dataRetirada;

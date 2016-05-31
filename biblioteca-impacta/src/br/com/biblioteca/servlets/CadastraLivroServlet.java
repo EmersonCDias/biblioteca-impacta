@@ -14,7 +14,7 @@ import br.com.biblioteca.modelo.Livro;
 /**
  * Servlet implementation class CadastraLivroServlet
  */
-@WebServlet("/cadastrarLivro")
+@WebServlet("/cadastrarLivro(removido)")
 public class CadastraLivroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

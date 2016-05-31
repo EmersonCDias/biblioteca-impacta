@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@include file="menu.html"%>
-<form action="localiza-livro.jsp">
+<form action="localizaLivro">
       ID LIVRO: <input type="text" name="id"/> <input type="submit"/>
 </form>
 </body>
