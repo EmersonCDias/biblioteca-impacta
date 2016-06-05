@@ -38,7 +38,7 @@ public class CadastrarRegistroEmprestimo extends HttpServlet {
 		
 		re.setNome(request.getParameter("nome"));
 		re.setRa(request.getParameter("ra"));
-		re.setIdLivro(request.getParameter("idLivro"));
+		//re.setIdLivro(request.getParameter("idLivro"));
 		re.setDataEntrega(request.getParameter("retirada"));
 		re.setDataEntrega(request.getParameter("devolucao"));
 		

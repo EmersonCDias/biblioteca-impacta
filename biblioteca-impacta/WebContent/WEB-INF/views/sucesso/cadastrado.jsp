@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="menu.html"%>
-<form action="localizaLivro">
-      ID LIVRO: <input type="text" name="id"/> <input type="submit"/>
-</form>
+<%@include file="/menu.html"%>
+CADASTRO EFETUADO COM SUCESSO
 </body>
 </html>

@@ -3,31 +3,26 @@ package br.com.biblioteca.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
-public class Livro {
+public class Usuario {
+	
 	@Id
 	@GeneratedValue
 	private long id;
 	
-	@NotNull
-	@Size(min = 5)
+	private String login;
+	private String senha;
 	private String nome;
+	private String tipo;
 	
-	@NotNull
-	@Size(min = 5)
-	private String autor;
-	
-	private String status;
 
-	public String getStatus() {
-		return status;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public long getId() {
@@ -46,12 +41,21 @@ public class Livro {
 		this.nome = nome;
 	}
 
-	public String getAutor() {
-		return autor;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	 
+	
 }
