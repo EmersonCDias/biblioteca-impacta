@@ -6,27 +6,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Livros Cadastrados</title>
+<title>Usuarios Cadastrados</title>
 </head>
 <body>
 <%@include file="/menu.html"%>
 <table border="1px">
-	<!-- percorre clientes montando as linhas da tabela -->
+	<!-- percorre usuarios montando as linhas da tabela -->
 	
 	<tr>
 		<th>ID</th>
 		<th>NOME</th>
-		<th>AUTOR</th>
-		<th>STATUS</th>
-		<th>ACAO</th>
+		<!-- <th>LOGIN</th>
+		<th>TIPO</th> -->
 	</tr>
-	<c:forEach items="${livro}" var="livro">
+	<c:forEach items="${usuario}" var="usuario">
 		<tr>
-			<td>${livro.id}</td>
-			<td>${livro.nome}</td>
-			<td>${livro.autor}</td>
-			<td>${livro.status}</td>
-			<td><a href="emprestaLivro">Emprestar</a></td>
+			<td>${usuario.id}</td>
+			<td>${usuario.nome}</td>
+<%-- 			<td>${usuario.login}</td> --%>
+<%--  			<td>${usuario.tipo}</td>  --%>
+			<!-- <td><a href="emprestaLivro">Emprestar</a></td> -->
 <!-- 		<td><a href="emprestar-livro.jsp?id=${livro.id}">Emprestar</a></td>   -->
 <!-- 		<td><a href="mvc?logica=EmprestarLivro&id=${livro.id}">Emprestar</a></td>   -->
 		</tr>
