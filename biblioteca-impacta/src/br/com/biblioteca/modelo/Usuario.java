@@ -11,16 +11,9 @@ public class Usuario {
 	@GeneratedValue
 	private long id;
 	
-	
 	private String login;
-	
-	
-	
 	private String senha;
-	
-	
 	private String nome;
-	
 	private String tipo;
 	
 

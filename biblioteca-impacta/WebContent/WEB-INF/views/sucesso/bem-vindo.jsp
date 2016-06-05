@@ -6,7 +6,7 @@
 <head>
 <title>Pagina Inicial</title>
 </head>
-<h3>Bem Vindo ao sistema da Biblioteca!</h3>
+<h3>Bem Vindo ao sistema da Biblioteca</h3>
 <%@include file="/menu.html"%>
 <body>
 

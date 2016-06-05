@@ -40,8 +40,14 @@ public class UsuarioDao {
 		entityManager.getTransaction().commit();
 	}
 
+	public void remove(Usuario usuario) {
+		entityManager.getTransaction().begin();
+		entityManager.remove(usuario);
+		entityManager.getTransaction().commit();
+	}
+
 	public List<Usuario> getList() {
-		Query query = entityManager.createQuery("select u from Livro as u");
+		Query query = entityManager.createQuery("select u from Usuario as u");
 		return query.getResultList();
 	}
 
@@ -49,25 +55,37 @@ public class UsuarioDao {
 		return entityManager.find(Usuario.class, id);
 	}
 
-	public Usuario existeUsuario(Usuario usuario) {
+	public Usuario getUsuario(Usuario usuario) {
 		String login = usuario.getLogin();
 		String senha = usuario.getSenha();
+		// String tipo = usuario.getTipo();
 		try {
+
 			entityManager
 					.createQuery(
-							"select u from Usuario u"
-									+ " where u.login = :name and u.senha = :senha")
-					.setParameter("name", login).setParameter("senha", senha)
+							"select u from Usuario u where u.login = :login and u.senha = :senha")
+					.setParameter("login", login).setParameter("senha", senha)
 					.getSingleResult();
 
 			return usuario;
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
 
-		/*
-		 * public void AlterarLivro(Long id){
-		 * 
-		 * }
-		 */}
+	/*
+	 * public Usuario validaTipo(Usuario usuario) { String tipo =
+	 * usuario.getTipo(); try { entityManager .createQuery(
+	 * "select u from Usuario u" + " where u.tipo = :type")
+	 * .setParameter("type", tipo).getSingleResult();
+	 * 
+	 * return usuario; } catch (NoResultException e) { return null; } }
+	 */
+
+	/*
+	 * public void AlterarLivro(Long id){
+	 * 
+	 * }
+	 */
+
 }

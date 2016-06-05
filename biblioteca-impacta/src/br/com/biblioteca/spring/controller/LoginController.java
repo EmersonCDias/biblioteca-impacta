@@ -18,10 +18,18 @@ public class LoginController {
 	@RequestMapping("/efetuaLogin")
 	public String efetuaLogin(Usuario usuario, HttpSession session) {
 		UsuarioDao dao = new UsuarioDao();
-		if (dao.existeUsuario(usuario) != null) {
-			session.setAttribute("usuarioLogado", usuario.getNome());
+		if (dao.getUsuario(usuario) != null) {
+			session.setAttribute("usuarioLogado", usuario);
+
 			return "sucesso/bem-vindo";
+
 		}
+		return "erro/login-erro";
+	}
+
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
 		return "redirect:loginForm";
 	}
 }
