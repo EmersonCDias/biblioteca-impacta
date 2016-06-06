@@ -10,11 +10,21 @@ public class RegistroEmprestimo {
 	private long id;
 	
 	private String nome;
-	private String ra;
+	private String cpf;
 	private Long idLivro;
 	private String dataRetirada;
 	private String dataEntrega;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public void setIdLivro(Long idLivro) {
+		this.idLivro = idLivro;
+	}
 	public long getId() {
 		return id;
 	}
@@ -27,17 +37,14 @@ public class RegistroEmprestimo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getRa() {
-		return ra;
+	public String getCpf() {
+		return cpf;
 	}
-	public void setRa(String ra) {
-		this.ra = ra;
+	public void setCpf(String ra) {
+		this.cpf = ra;
 	}
 	public Long getIdLivro() {
 		return idLivro;
-	}
-	public void setIdLivro(long l) {
-		this.idLivro = l;
 	}
 	public String getDataRetirada() {
 		return dataRetirada;

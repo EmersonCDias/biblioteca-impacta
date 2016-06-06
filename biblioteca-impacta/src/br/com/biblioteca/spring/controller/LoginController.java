@@ -18,7 +18,13 @@ public class LoginController {
 	@RequestMapping("/efetuaLogin")
 	public String efetuaLogin(Usuario usuario, HttpSession session) {
 		UsuarioDao dao = new UsuarioDao();
-		if (dao.getUsuario(usuario) != null) {
+//			Usuario usuario2 = new Usuario();
+//			usuario2.setLogin("max");
+//			usuario2.setSenha("123");
+//			usuario2.setNome("Maxwel");
+//			usuario2.setTipo("bibliotecario");
+//			dao.adiciona(usuario2);
+		if (dao.getUsuario(usuario) != null ) {
 			session.setAttribute("usuarioLogado", usuario);
 
 			return "sucesso/bem-vindo";

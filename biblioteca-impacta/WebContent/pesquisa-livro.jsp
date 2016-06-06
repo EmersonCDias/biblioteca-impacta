@@ -9,7 +9,11 @@
 <body>
 <%@include file="menu.html"%>
 <form action="localizaLivro">
-      ID LIVRO: <input type="text" name="id"/> <input type="submit"/>
+    <input type="text" name="valor"/> <input type="submit" value="Procurar"/><br/>
+    <input type="radio" name="tipo" value="id" /> ID<br/>
+	<input type="radio" name="tipo" value="nome" /> NOME<br/>
+	<input type="radio" name="tipo" value="autor" /> AUTOR<br/>
+	<input type="radio" name="tipo" value="status" /> STATUS<br/>
 </form>
 </body>
 </html>

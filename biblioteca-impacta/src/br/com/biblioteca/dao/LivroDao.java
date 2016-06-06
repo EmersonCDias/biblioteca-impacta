@@ -51,4 +51,10 @@ public class LivroDao {
 	public void AlterarLivro(Long id){
 		
 	}
+	
+	public List<Livro> localzarLivros(String campo, String valor){
+		String queryCommand = "select l from Livro as l where "+campo+"='"+valor+"'";
+		Query query = entityManager.createQuery(queryCommand);
+		return  query.getResultList();
+	}
 }
