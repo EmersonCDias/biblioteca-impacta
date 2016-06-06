@@ -1,9 +1,14 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
       <head>
           <title>Cadastro de livro</title>
           <meta charset="utf-8">
-          <link rel="stylesheet" type="text/css" href="styleBiblioteca.css"/>
+          <link rel="stylesheet" type="text/css" href="/biblioteca-impacta/css/styleBiblioteca.css" />
       </head>
       <body>
           <header>
@@ -26,9 +31,10 @@
                       <label>Autor: </label><br/>
                         <input type="text" name="autor" /><br />      
                       
+                       <input class="submit" type="submit" value="GRAVAR" />
                   </form>
               </div>
-                      <input class="submit" type="submit" value="GRAVAR" />
+                     
             </section>
             <footer>
               Copyright 2015 - Todos os direitos reservados.

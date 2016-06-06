@@ -27,6 +27,8 @@
 					<form action="cadastrarUsuario" method="post">
 						<label>Nome: </label><br/>
 							<input type="text" name="nome" /><br />
+						<label>Cpf: </label><br/>
+							<input type="text" name="nome" /><br />
 						<label>Login: </label><br/>
 							<input type="text" name="login" /><br /> 
 						<label>Senha: </label><br/>
@@ -38,10 +40,11 @@
 							<input class="radioEdition" type="radio" name="tipo" value="professor" /> 
 								<label class="labelRadio">Professor</label><br/>
 							<input class="radioEdition" type="radio" name="tipo" value="aluno" /> 
-								<label class="labelRadio">Aluno</label>	
+								<label class="labelRadio">Aluno</label>
+						<input class="submit" type="submit" value="GRAVAR" />	
 					</form>
 				</div>
-						<input class="submit" type="submit" value="GRAVAR" />
+						
 			</section>
 			<footer>
               Copyright 2015 - Todos os direitos reservados.
