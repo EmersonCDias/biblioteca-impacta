@@ -18,17 +18,27 @@ public class LoginController {
 	@RequestMapping("/efetuaLogin")
 	public String efetuaLogin(Usuario usuario, HttpSession session) {
 		UsuarioDao dao = new UsuarioDao();
-//			Usuario usuario2 = new Usuario();
-//			usuario2.setLogin("max");
-//			usuario2.setSenha("123");
-//			usuario2.setNome("Maxwel");
-//			usuario2.setTipo("bibliotecario");
-//			dao.adiciona(usuario2);
-		if (dao.getUsuario(usuario) != null ) {
+		
+		Usuario user = dao.carregaDados(usuario);
+		String tipo = user.getTipo();
+		if(user!= null){
+			System.out.println("Não é Nulo!");
+		}
+		if(user.getTipo().equals("bibliotecario")){
+			System.out.println("é bibliotecario");
+		}
+
+		System.out.println(user.getTipo());
+		if (user != null && user.getTipo().equals("bibliotecario")) {
+
 			session.setAttribute("usuarioLogado", usuario);
 
 			return "sucesso/bem-vindo";
-
+		}
+		if(user != null &&  !user.getTipo().equals("bibliotecario")) {
+			session.setAttribute("usuarioLogado", usuario);
+			return "sucesso/bem-vindo2";
+		
 		}
 		return "erro/login-erro";
 	}
