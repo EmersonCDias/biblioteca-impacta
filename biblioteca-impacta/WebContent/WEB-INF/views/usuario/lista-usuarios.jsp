@@ -16,15 +16,15 @@
 	<tr>
 		<th>ID</th>
 		<th>NOME</th>
-		<!-- <th>LOGIN</th>
-		<th>TIPO</th> -->
+		<!-- <th>LOGIN</th>-->
+		<th>TIPO</th>
 	</tr>
 	<c:forEach items="${usuario}" var="usuario">
 		<tr>
 			<td>${usuario.id}</td>
 			<td>${usuario.nome}</td>
 <%-- 			<td>${usuario.login}</td> --%>
-<%--  			<td>${usuario.tipo}</td>  --%>
+  			<td>${usuario.tipo}</td> 
 			<!-- <td><a href="emprestaLivro">Emprestar</a></td> -->
 <!-- 		<td><a href="emprestar-livro.jsp?id=${livro.id}">Emprestar</a></td>   -->
 <!-- 		<td><a href="mvc?logica=EmprestarLivro&id=${livro.id}">Emprestar</a></td>   -->

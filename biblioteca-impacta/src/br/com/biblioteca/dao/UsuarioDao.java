@@ -55,37 +55,47 @@ public class UsuarioDao {
 		return entityManager.find(Usuario.class, id);
 	}
 
-	public Usuario getUsuario(Usuario usuario) {
-		String login = usuario.getLogin();
-		String senha = usuario.getSenha();
-		// String tipo = usuario.getTipo();
+	public Usuario carregaDados(Usuario usuario) {
+		String login= usuario.getLogin();
+				
 		try {
-
-			entityManager
+			
+			return (Usuario) entityManager
 					.createQuery(
-							"select u from Usuario u where u.login = :login and u.senha = :senha")
-					.setParameter("login", login).setParameter("senha", senha)
-					.getSingleResult();
+							"select u from Usuario u where"
+							+ " u.login = :login").
+				setParameter("login", login).getSingleResult();
+			
 
-			return usuario;
 		} catch (NoResultException e) {
 			return null;
 		}
 	}
 
-	/*
-	 * public Usuario validaTipo(Usuario usuario) { String tipo =
-	 * usuario.getTipo(); try { entityManager .createQuery(
-	 * "select u from Usuario u" + " where u.tipo = :type")
-	 * .setParameter("type", tipo).getSingleResult();
-	 * 
-	 * return usuario; } catch (NoResultException e) { return null; } }
-	 */
+	public Usuario getUsuario(Usuario usuario) {
+		String login = usuario.getLogin();
+		String senha = usuario.getSenha();
+
+		try {
+
+			entityManager
+					.createQuery(
+							"select u from Usuario u where"
+									+ " u.login = :login and u.senha = :senha")
+					.setParameter("login", login).setParameter("senha", senha);
+
+			return usuario;
+		} catch (NoResultException e) {
+			return null;
+		}
+
+	}
 
 	/*
-	 * public void AlterarLivro(Long id){
-	 * 
-	 * }
+	 * public String verificaAcesso(Usuario usuario) { String tipo =
+	 * usuario.getTipo(); tipo.charAt(0); switch (tipo) { case "b": return
+	 * "bibliotecario"; case "p": return "professor"; case "a": return "aluno";
+	 * default: return null; } };
 	 */
 
 }

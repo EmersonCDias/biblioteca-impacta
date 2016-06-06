@@ -21,40 +21,50 @@ public class Usuario {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public Usuario setTipo(String tipo) {
 		this.tipo = tipo;
+		
+		return this;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public Usuario setId(long id) {
 		this.id = id;
+		
+		return this;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public Usuario setNome(String nome) {
 		this.nome = nome;
+		
+		return this;
 	}
 
 	public String getLogin() {
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public Usuario setLogin(String login) {
 		this.login = login;
+		
+		return this;
 	}
 
 	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
+	public Usuario setSenha(String senha) {
 		this.senha = senha;
+		
+		return this;
 	}
 	 
 	

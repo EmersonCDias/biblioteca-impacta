@@ -12,7 +12,6 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 
 		HttpSession session = request.getSession();
 
-		// Criar o metodo usuario logado
 		if (session.getAttribute("usuarioLogado") != null) {
 			return true;
 		}
