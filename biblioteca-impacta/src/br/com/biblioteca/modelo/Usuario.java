@@ -15,7 +15,16 @@ public class Usuario {
 	private String senha;
 	private String nome;
 	private String tipo;
+	private String cpf;
 	
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	public String getTipo() {
 		return tipo;

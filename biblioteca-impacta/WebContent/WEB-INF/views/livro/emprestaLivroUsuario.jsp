@@ -9,13 +9,21 @@
 </head>
 <body>
 	<%@include file="/menu.html"%>
+	<form action="localizaUsuario">
+	<input type="hidden" name="id" value="${registroEmprestimo.id}" />
+    <input type="text" name="valor"/> <input type="submit" value="Procurar"/><br/>
+    <input type="radio" name="tipo" value="cpf" checked /> CPF<br/>
+	<input type="radio" name="tipo" value="nome" /> NOME<br/>
+	<input type="radio" name="tipo" value="login" /> login<br/>
+</form>
+<!--	
 	<form action="concluirEmprestimo" method="post">
-	  <input type="hidden" name="idLivro" value="${registroEmprestimo.id}" />
+ 	<input type="hidden" name="idLivro" value="${registroEmprestimo.id}" />  
       Nome: <input type="text" name="nome" /><br />
       Ra: <input type="text" name="ra" /><br /> 
       Data Retirada: <input type="text" name="dataRetirada" /><br /> 
       Data Entrega: <input type="text" name="dataEntrega" /><br />      
       <input type="submit" value="Gravar" />
-    </form>
+    </form>	-->
 </body>
 </html>

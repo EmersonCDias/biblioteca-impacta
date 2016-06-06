@@ -8,6 +8,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import br.com.biblioteca.modelo.Livro;
 import br.com.biblioteca.modelo.Usuario;
 
 public class UsuarioDao {
@@ -97,5 +98,9 @@ public class UsuarioDao {
 	 * "bibliotecario"; case "p": return "professor"; case "a": return "aluno";
 	 * default: return null; } };
 	 */
-
+	public List<Usuario> localizarUsuario(String campo, String valor){
+		String queryCommand = "select l from Usuario as l where "+campo+"='"+valor+"'";
+		Query query = entityManager.createQuery(queryCommand);
+		return  query.getResultList();
+	}
 }

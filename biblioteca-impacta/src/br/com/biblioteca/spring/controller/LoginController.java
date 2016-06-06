@@ -18,7 +18,6 @@ public class LoginController {
 	@RequestMapping("/efetuaLogin")
 	public String efetuaLogin(Usuario usuario, HttpSession session) {
 		UsuarioDao dao = new UsuarioDao();
-
 		
 		Usuario user = dao.carregaDados(usuario);
 		String tipo = user.getTipo();
@@ -31,6 +30,7 @@ public class LoginController {
 
 		System.out.println(user.getTipo());
 		if (user != null && user.getTipo().equals("bibliotecario")) {
+
 			session.setAttribute("usuarioLogado", usuario);
 
 			return "sucesso/bem-vindo";

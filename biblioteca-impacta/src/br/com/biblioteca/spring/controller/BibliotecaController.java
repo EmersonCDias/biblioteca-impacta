@@ -1,5 +1,7 @@
 package br.com.biblioteca.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -61,20 +63,54 @@ public class BibliotecaController {
 	}
 
 	@RequestMapping("localizaLivro")
-	public String localizaLivro(Long id, Model model) {
+	public String localizaLivro(String tipo,String valor, Model model) {
 		LivroDao dao = new LivroDao();
-		model.addAttribute("livroLocalizado", dao.CarregaLivro(id));
-		return "livro/livro-localizado";
+		List<Livro> listaLivrosLocalizados = dao.localzarLivros(tipo, valor);
+		if (listaLivrosLocalizados != null){
+			model.addAttribute("livroLocalizado", listaLivrosLocalizados);
+			return "livro/livro-localizado";
+		}
+		return "erro/livro-nao-localizado";
 	}
-
+	
+	@RequestMapping("localizaUsuario")
+	public String localizaUsuario(Long id,String tipo,String valor, Model model) {
+		UsuarioDao dao = new UsuarioDao();
+		RegistroEmprestimoDao reDao = new RegistroEmprestimoDao();
+		RegistroEmprestimo re = reDao.CarregaLivro(id);
+		List<Usuario> listaUsuariosLocalizados = dao.localizarUsuario(tipo, valor);
+		if (listaUsuariosLocalizados != null){
+			model.addAttribute("usuario", listaUsuariosLocalizados);
+			model.addAttribute("registroEmprestimo", re);
+			return "usuario/usuario-localizado";
+		}
+		return "erro/usuario-nao-localizado";
+	}
 	@RequestMapping("emprestaLivro")
-	public String emprestaLivro(Livro livro, Model model) {
-		RegistroEmprestimo re = new RegistroEmprestimo();
-		// RegistroEmprestimoDao reDao = new RegistroEmprestimoDao();
-		// reDao.adiciona(re);
-		re.setIdLivro(livro.getId());
-		model.addAttribute("registroEmprestimo", re);
-		return "livro/emprestaLivroUsuario";
+	public String emprestaLivro(long id, Model model) {
+		LivroDao dao = new LivroDao();	
+		Livro livro = dao.CarregaLivro(id);
+		if (livro.getStatus().equalsIgnoreCase("disponivel")){
+			RegistroEmprestimo re = new RegistroEmprestimo();
+			RegistroEmprestimoDao reDao = new RegistroEmprestimoDao();
+			re.setIdLivro(livro.getId());
+			re.setStatus("PENDENTE");
+			reDao.adiciona(re);
+			model.addAttribute("registroEmprestimo", re);
+			return "livro/emprestaLivroUsuario";
+		}
+		return "erro/livro-indisponivel";
+
+	}
+	@RequestMapping("formFinal")
+	public String formFinal(Long idUser,Long idEmprestimo, Model model){
+		UsuarioDao userDao =new UsuarioDao();
+		Usuario user = userDao.carregaUsuario(idUser);
+		RegistroEmprestimoDao regDao = new RegistroEmprestimoDao();
+		RegistroEmprestimo reg = regDao.CarregaLivro(idEmprestimo);
+		reg.setCpf(user.getCpf());
+		reg.setNome(user.getNome());
+		return "emprestimo/concluirEmprestimo";
 	}
 
 	@RequestMapping("concluirEmprestimo")
