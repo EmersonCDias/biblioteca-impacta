@@ -54,14 +54,25 @@ public class BibliotecaController {
 		model.addAttribute("livro", dao.getList());
 		return "livro/lista";
 	}
-	
+	@RequestMapping("listaRegistroEmprestimo")
+	public String listaRegistroEmprestimo(Model model) {
+		RegistroEmprestimoDao dao = new RegistroEmprestimoDao();
+		model.addAttribute("livro", dao.getList());
+		return "emprestimo/lista-emprestimos";
+	}
 	@RequestMapping("listaUsuarios")
 	public String listaUsuarios(Model model) {
 		UsuarioDao dao = new UsuarioDao();
 		model.addAttribute("usuario", dao.getList());
 		return "usuario/lista-usuarios";
 	}
-
+	
+	@RequestMapping("listaEmprestimos")
+	public String listaEmprestimos(Model model) {
+		RegistroEmprestimoDao dao = new RegistroEmprestimoDao();
+		model.addAttribute("emprestimo", dao.getList());
+		return "emprestimo/lista-emprestimos";
+	}
 	@RequestMapping("localizaLivro")
 	public String localizaLivro(String tipo,String valor, Model model) {
 		LivroDao dao = new LivroDao();
@@ -77,7 +88,7 @@ public class BibliotecaController {
 	public String localizaUsuario(Long id,String tipo,String valor, Model model) {
 		UsuarioDao dao = new UsuarioDao();
 		RegistroEmprestimoDao reDao = new RegistroEmprestimoDao();
-		RegistroEmprestimo re = reDao.CarregaLivro(id);
+		RegistroEmprestimo re = reDao.CarregaReg(id);
 		List<Usuario> listaUsuariosLocalizados = dao.localizarUsuario(tipo, valor);
 		if (listaUsuariosLocalizados != null){
 			model.addAttribute("usuario", listaUsuariosLocalizados);
@@ -102,22 +113,50 @@ public class BibliotecaController {
 		return "erro/livro-indisponivel";
 
 	}
+	
+	@RequestMapping("devolveLivro")
+	public String devolveLivro(long id, Model model) {
+		LivroDao dao = new LivroDao();	
+		Livro livro = dao.CarregaLivro(id);
+		if (livro.getStatus().equalsIgnoreCase("emprestado")){
+			RegistroEmprestimoDao reDao = new RegistroEmprestimoDao();
+			RegistroEmprestimo re = reDao.CarregaRegIdLivro(livro.getId());		
+			re.setStatus("DEVOLVIDO");
+			livro.setStatus("DISPONIVEL");
+			dao.alterar(livro);
+			reDao.AlterarReg(re);
+			model.addAttribute("registroEmprestimo", re);
+			return "livro/devolucao";
+		}
+		return "erro/livro-nao-devolvido";
+
+	}
 	@RequestMapping("formFinal")
 	public String formFinal(Long idUser,Long idEmprestimo, Model model){
 		UsuarioDao userDao =new UsuarioDao();
 		Usuario user = userDao.carregaUsuario(idUser);
 		RegistroEmprestimoDao regDao = new RegistroEmprestimoDao();
-		RegistroEmprestimo reg = regDao.CarregaLivro(idEmprestimo);
+		RegistroEmprestimo reg = regDao.CarregaReg(idEmprestimo);
 		reg.setCpf(user.getCpf());
 		reg.setNome(user.getNome());
+		regDao.AlterarReg(reg);
 		model.addAttribute("registroEmprestimo", reg);
 		return "emprestimo/concluirEmprestimo";
 	}
 
 	@RequestMapping("concluirEmprestimo")
-	public String concluirEmprestimo(RegistroEmprestimo re) {
+	public String concluirEmprestimo(RegistroEmprestimo re, long idReg) {
 		RegistroEmprestimoDao reDao = new RegistroEmprestimoDao();
-		reDao.adiciona(re);
+		LivroDao livroDao = new LivroDao();
+		RegistroEmprestimo regAtual = reDao.CarregaReg(idReg);
+		regAtual.setDataEntrega(re.getDataEntrega());
+		regAtual.setDataRetirada(re.getDataRetirada());
+		regAtual.setStatus("AGUARDANDO DEVOLUCAO");
+		reDao.AlterarReg(regAtual);
+		Livro livro = livroDao.CarregaLivro(regAtual.getIdLivro());
+		livro.setStatus("EMPRESTADO");
+		livroDao.alterar(livro);
+		reDao.atualizaPendentes();
 		return "sucesso/emprestimo-concluido";
 	}
 

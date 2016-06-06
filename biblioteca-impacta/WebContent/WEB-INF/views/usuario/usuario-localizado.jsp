@@ -24,8 +24,7 @@
 			<td>${usuario.nome}</td>
 <%-- 			<td>${usuario.login}</td> --%>
   			<td>${usuario.tipo}</td>
-  			<td>${registroEmprestimo.id}</td>
-  			<td><a href="formFinal?idUser=${usuario.id}&idEmprestimo=${registroEmprestimo.id}">Selecionar</a></td>  
+ 			<td><a href="formFinal?idUser=${usuario.id}&idEmprestimo=${registroEmprestimo.id}">Selecionar</a></td> 
 			<!-- <td><a href="emprestaLivro">Emprestar</a></td> -->
 		</tr>
 	</c:forEach>

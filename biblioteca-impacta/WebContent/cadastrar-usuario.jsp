@@ -13,6 +13,7 @@
 	<form action="cadastrarUsuario" method="post">
 
 		Nome: <input type="text" name="nome" /><br /> 
+		CPF: <input type="text" name="cpf" /><br /> 
 		Login: <input type="text" name="login" /><br /> 
 		Senha: <input type="password" name="senha" /><br /> 
 		

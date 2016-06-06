@@ -40,8 +40,8 @@ public class RegistroEmprestimo {
 	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(String ra) {
-		this.cpf = ra;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	public Long getIdLivro() {
 		return idLivro;

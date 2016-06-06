@@ -26,7 +26,8 @@
 			<td>${livro.nome}</td>
 			<td>${livro.autor}</td>
 			<td>${livro.status}</td>
- 			<td><a href="emprestar-livro.jsp?id=${livro.id}">Emprestar</a></td>   
+ 			<td><a href="emprestaLivro?id=${livro.id}">Emprestar</a></td>
+			<td><a href="emprestaLivro?id=${livro.id}">Devolver</a></td>   
 <!-- 		<td><a href="mvc?logica=EmprestarLivro&id=${livro.id}">Emprestar</a></td>   -->
 		</tr>
 	</c:forEach>

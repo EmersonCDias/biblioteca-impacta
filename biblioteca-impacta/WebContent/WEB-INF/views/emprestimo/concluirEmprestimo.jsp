@@ -9,9 +9,10 @@
 </head>
 <body>
 <%@include file="/menu.html"%>
-<form action="localizaLivro">
-    Entrega:<input type="text" name="dataEntrega"/><br/>
-	Devolucao:<input type="text" name="dataDevolucao"/><br/>
+<form action="concluirEmprestimo">
+    <input type="hidden" name="idReg" value="${registroEmprestimo.id}" />
+    Retirada:<input type="text" name="dataRetirada"/><br/>
+    Entrega:<input type="date" name="dataEntrega"/><br/>
 	 <input type="submit" value="Concluir"/>
 </form>
 </body>
