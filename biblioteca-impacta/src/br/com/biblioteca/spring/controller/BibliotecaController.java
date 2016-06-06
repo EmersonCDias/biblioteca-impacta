@@ -110,6 +110,7 @@ public class BibliotecaController {
 		RegistroEmprestimo reg = regDao.CarregaLivro(idEmprestimo);
 		reg.setCpf(user.getCpf());
 		reg.setNome(user.getNome());
+		model.addAttribute("registroEmprestimo", reg);
 		return "emprestimo/concluirEmprestimo";
 	}
 
