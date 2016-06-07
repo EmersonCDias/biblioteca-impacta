@@ -1,8 +1,14 @@
 package br.com.biblioteca.modelo;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class RegistroEmprestimo {
 	@Id
@@ -12,8 +18,11 @@ public class RegistroEmprestimo {
 	private String nome;
 	private String cpf;
 	private Long idLivro;
+	
 	private String dataRetirada;
+	
 	private String dataEntrega;
+	
 	private String status;
 	
 	public String getStatus() {
