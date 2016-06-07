@@ -11,7 +11,7 @@
 <%@include file="/menu.html"%>
 <form action="concluirEmprestimo">
     <input type="hidden" name="idReg" value="${registroEmprestimo.id}" />
-    Retirada:<input type="text" name="dataRetirada"/><br/>
+    Retirada:<input type="date" name="dataRetirada" /><br/>
     Entrega:<input type="date" name="dataEntrega"/><br/>
 	 <input type="submit" value="Concluir"/>
 </form>

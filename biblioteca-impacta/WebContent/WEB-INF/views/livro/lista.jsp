@@ -10,6 +10,14 @@
 </head>
 <body>
 <%@include file="/menu.html"%>
+
+<form action="localizaLivro">
+    <input type="text" name="valor"/> <input type="submit" value="Procurar"/><br/>
+    <input type="radio" name="tipo" value="id" /> ID
+	<input type="radio" name="tipo" value="nome" /> NOME
+	<input type="radio" name="tipo" value="autor" /> AUTOR
+	<input type="radio" name="tipo" value="status" /> STATUS<br/>
+</form>
 <table border="1px">
 	<!-- percorre clientes montando as linhas da tabela -->
 	
@@ -19,7 +27,8 @@
 		<th>AUTOR</th>
 		<th>STATUS</th>
 		<th>ACAO</th>
-	</tr>
+	</tr><br/>
+	
 	<c:forEach items="${livro}" var="livro">
 		<tr>
 			<td>${livro.id}</td>
